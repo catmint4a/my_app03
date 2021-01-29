@@ -7,7 +7,6 @@ jobs:
   build:
     docker:
       - image: circleci/ruby:2.7
-      - image: circleci/ruby:2.7-node-browsers
     working_directory: ~/my_app03/src
     steps:
       - checkout:
@@ -37,8 +36,8 @@ jobs:
           name: Database setup
           command: bundle exec rails db:migrate
       - run:
-          name: webpack setup
-          command: bundle exec bin/webpack
+          name: yarn setup
+          command: bundle exec apt-get install -y nodejs yarn
       - run:
           name: test
           command: bundle exec rails test
