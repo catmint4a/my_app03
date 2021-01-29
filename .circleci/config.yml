@@ -37,6 +37,9 @@ jobs:
           name: Database setup
           command: bundle exec rails db:migrate
       - run:
+          name: webpack setup
+          command: bundle exec bin/webpack
+      - run:
           name: test
           command: bundle exec rails test
 
