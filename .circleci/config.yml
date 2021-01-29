@@ -35,9 +35,7 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rails db:migrate
-      - run:
-          name: yarn setup
-          command: sudo bundle exec apt-get install -y nodejs yarn
+
       - run:
           name: test
           command: bundle exec rails test
