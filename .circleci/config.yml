@@ -16,8 +16,7 @@ jobs:
       # Store bundle cache
       # - node/install-packages:
           # pkg-manager: yarn
-          #cache-key: "yarn.lock"
-  yarn_install:
+          #cache-key: "yarn.lock"  
     steps:
       - restore_cache:
           keys:
@@ -90,9 +89,9 @@ workflows:
   build_test_and_deploy:
     jobs:
       - build
-      - yarn_install:
-          requires:
-            - build
+      # - yarn_install:
+      #     requires:
+      #       - build
       - test:
           requires:
             - build
