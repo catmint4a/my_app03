@@ -2,20 +2,20 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.2
   heroku: circleci/heroku@1.2.3
-  node: circleci/node@2
+  # node: circleci/node@2
 
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7-node
+      - image: circleci/ruby:2.7 #-node
     working_directory: ~/my_app03/src
     steps:
       - checkout:
           path: ~/my_app03
       - ruby/install-deps
       # Store bundle cache
-      - node/install-packages:
-          pkg-manager: yarn
+      # - node/install-packages:
+          # pkg-manager: yarn
           #cache-key: "yarn.lock"
   
   test:
@@ -37,12 +37,12 @@ jobs:
       - checkout:
           path: ~/my_app03
       - ruby/install-deps
-      - node/install-packages:
-          pkg-manager: yarn
+      # - node/install-packages:
+      #     pkg-manager: yarn
           #cache-key: "yarn.lock"
-      - run:
-          name: Wait for DB
-          command: dockerize -wait tcp://localhost:5432 -timeout 1m
+      # - run:
+      #     name: Wait for DB
+      #     command: dockerize -wait tcp://localhost:5432 -timeout 1m
       - run:
           name: Database setup
           command: bundle exec rails db:migrate
