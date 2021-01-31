@@ -2,20 +2,34 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.2
   heroku: circleci/heroku@1.2.3
+  # node: circleci/node@2
 
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.7
+      - image: circleci/ruby:2.7-node-browsers
     working_directory: ~/my_app03/src
     steps:
       - checkout:
           path: ~/my_app03
       - ruby/install-deps
-  
+      - restore_cache:
+          keys:
+            - app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - app-
+      - run: bundle install --path vendor/bundle
+      - run: yarn install
+      - save_cache:
+          key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - vendor/bundle
+            - node_modules
+      - run: bundle exec bin/webpack
+      - run: bundle exec rails webpacker:install
+      - run: bundle exec rails webpacker:compile
   test:
     docker:
-      - image: circleci/ruby:2.7
+      - image: circleci/ruby:2.7-node-browsers
       - image: circleci/mysql:5.5
         environment:
           MYSQL_ROOT_PASSWORD: password
@@ -27,6 +41,7 @@ jobs:
       BUNDLE_RETRY: "3"
       APP_DATABASE_HOST: "127.0.0.1"
       RAILS_ENV: test
+      NODE_ENV: test
     working_directory: ~/my_app03/src
     steps:
       - checkout:
@@ -36,9 +51,9 @@ jobs:
           name: Database setup
           command: bundle exec rails db:migrate
 
-      - run:
-          name: test
-          command: bundle exec rake test
+      # - run:
+      #     name: test
+      #     command: bundle exec rails test
 
   deploy:
     docker:
@@ -65,7 +80,7 @@ workflows:
   version: 2
   build_test_and_deploy:
     jobs:
-      - build
+      - build     
       - test:
           requires:
             - build
