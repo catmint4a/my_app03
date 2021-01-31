@@ -70,8 +70,7 @@ workflows:
   version: 2
   build_test_and_deploy:
     jobs:
-      - build
-      - yarn_install      
+      - build     
       - test:
           requires:
             - build
