@@ -13,7 +13,7 @@ jobs:
       - checkout:
           path: ~/my_app03
       - ruby/install-deps
-    - restore_cache:
+      - restore_cache:
           keys:
             - app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
             - app-
