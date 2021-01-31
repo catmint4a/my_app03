@@ -13,7 +13,18 @@ jobs:
       - checkout:
           path: ~/my_app03
       - ruby/install-deps
-  
+    - restore_cache:
+          keys:
+            - app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+            - app-
+      - run: bundle install --path vendor/bundle
+      - run: yarn install
+      - save_cache:
+          key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
+          paths:
+            - vendor/bundle
+            - node_modules
+      - run: bundle exec bin/webpack  
   test:
     docker:
       - image: circleci/ruby:2.7-node-browsers
@@ -34,46 +45,6 @@ jobs:
       - checkout:
           path: ~/my_app03
       - ruby/install-deps
-      - run:
-          name: Which bundler?
-          command: bundle -v
-
-      # Restore bundle cache
-      - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "Gemfile.lock" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run:
-          name: install dependencies
-          command: |
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
-      # Store bundle cache
-      - save_cache:
-          paths:
-            - ./vendor/bundle
-          key: v1-dependencies-{{ checksum "Gemfile.lock" }}
-
-      - run:
-          name: webpacker
-          command: bundle exec rails webpacker:compile
-
-      # Only necessary if app uses webpacker or yarn in some other way
-      - restore_cache:
-          keys:
-            - surventrix-yarn-{{ checksum "yarn.lock" }}
-            - surventrix-yarn-
-
-      - run:
-          name: Yarn Install
-          command: yarn install --cache-folder ~/.cache/yarn
-
-      # Store yarn / webpacker cache
-      - save_cache:
-          key: surventrix-yarn-{{ checksum "yarn.lock" }}
-          paths:
-            - ~/.cache/yarn
       - run:
           name: Database setup
           command: bundle exec rails db:migrate
