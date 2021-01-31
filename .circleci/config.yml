@@ -47,8 +47,11 @@ jobs:
 
             # Install Yarn
             npm install -g yarn@1.13.0
-            
+
             export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+            
       - run:
           name: Database setup
           command: bundle exec rails db:migrate
