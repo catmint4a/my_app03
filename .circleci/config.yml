@@ -28,6 +28,7 @@ jobs:
       - run: bundle exec rails webpacker:install
       - run: bundle exec rails webpacker:compile
       - run: bundle exec rails assets:precompile
+      - run: bin/webpack
   test:
     docker:
       - image: circleci/ruby:2.7-node-browsers
