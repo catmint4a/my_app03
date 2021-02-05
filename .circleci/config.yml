@@ -2,7 +2,6 @@ version: 2.1
 orbs:
   ruby: circleci/ruby@1.1.2
   heroku: circleci/heroku@1.2.3
-  # node: circleci/node@2
 
 jobs:
   build:
@@ -37,26 +36,14 @@ jobs:
       - run:
           name: Database setup
           command: bundle exec rails db:migrate
-      # - restore_cache:
-      #     keys:
-      #       - app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-      #       - app-
       - run: bundle install --path vendor/bundle
       - run:
           name: yarn Install
           command: yarn install
-      # - save_cache:
-      #     key: app-{{ checksum "Gemfile.lock" }}-{{ checksum "yarn.lock" }}
-      #     paths:
-      #       - vendor/bundle
-      #       - node_modules
       - run: bundle exec bin/webpack
-      # - run: bundle exec rails webpacker:install
-      # - run: bundle exec rails webpacker:compile
-      # - run: bundle exec rails assets:precompile
       - run:
           name: test
-          command: bundle exec rails test
+          command: bin/rspec
 
   deploy:
     docker:
