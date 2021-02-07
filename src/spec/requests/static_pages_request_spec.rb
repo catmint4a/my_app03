@@ -30,5 +30,8 @@ RSpec.describe "StaticPages", type: :request do
     it "about link" do
       expect(page).to have_link 'このサイトについて'
     end
+    it "user new link" do
+      expect(page).to have_link '会員登録'
+    end
   end
 end
