@@ -61,6 +61,18 @@ RSpec.describe User, type: :model do
     user.save
     expect(other_user).to be_invalid
   end
+  it "is invalid not unique name " do
+    user = User.new(
+      name: "Aaron",
+      email: "tester@example.com",
+    )
+    other_user = User.new(
+      name: "Aaron",
+      email: "teser2@example.com",
+    )
+    user.save
+    expect(other_user).to be_invalid
+  end
   it "is invalid email format" do
     user = User.new(
       name: "Aaron",
