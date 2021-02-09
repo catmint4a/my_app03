@@ -1,13 +1,16 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  # pending "add some examples to (or delete) #{__FILE__}"
-  it "is valid with a name, email" do
-    user = User.new(
-      name: "Aaron",
-      email: "tester@example.com",
+  before do
+    @user = User.new(
+    name: "Aaron",
+    email: "tester@example.com",
+    password: "password",
+    password_confirmation: "password",
     )
-    expect(user).to be_valid
+  end
+  it "is valid with a name, email" do    
+    expect(@user).to be_valid
   end
 
   it "is invalid with a no name, no email" do
@@ -57,5 +60,20 @@ RSpec.describe User, type: :model do
     other_user.email.downcase!
     user.save
     expect(other_user).to be_invalid
+  end
+  it "is invalid email format" do
+    user = User.new(
+      name: "Aaron",
+      email: "tester@example,com",
+    )
+    expect(user).to be_invalid
+  end
+  it "is password present, nonblank" do
+    @user.password = @user.password_confirmation = " " * 8
+    expect(@user).to be_invalid
+  end
+  it "is password a minimum length" do
+    @user.password = @user.password_confirmation = "v" * 7
+    expect(@user).to be_invalid
   end
 end
