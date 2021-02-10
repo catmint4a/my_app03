@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true, length: {minimum: 8 }
 
-  # def to_param
-  #   name
-  # end
+  def to_param
+    name
+  end
 end
