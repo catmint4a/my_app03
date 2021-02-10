@@ -92,14 +92,14 @@ RSpec.describe User, type: :model do
   describe "with valid information" do
     before do
       visit "/signup"
-      fill_in "Name",         with: "Example User"
-      fill_in "Email",        with: "user@example.com"
-      fill_in "Password",     with: "foobar001"
-      fill_in "Confirmation", with: "foobar001"
+      fill_in "ユーザー名",         with: "Example User"
+      fill_in "メールアドレス",        with: "user@example.com"
+      fill_in "パスワード",     with: "foobar001"
+      fill_in "パスワードの確認", with: "foobar001"
     end
     it "should create a user" do
       #click_buttonの後、User.countが1だけ変化する事を期待
-      expect { click_button "Create my account" }.to change(User, :count).by(1)
+      expect { click_button "ユーザー登録" }.to change(User, :count).by(1)
     end
   end
 end
