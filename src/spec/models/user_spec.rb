@@ -88,4 +88,18 @@ RSpec.describe User, type: :model do
     @user.password = @user.password_confirmation = "v" * 7
     expect(@user).to be_invalid
   end
+
+  describe "with valid information" do
+    before do
+      visit "/signup"
+      fill_in "ユーザー名",         with: "ExampleUser"
+      fill_in "メールアドレス",        with: "user@example.com"
+      fill_in "パスワード",     with: "foobar001"
+      fill_in "パスワードの確認", with: "foobar001"
+    end
+    it "should create a user" do
+      #click_buttonの後、User.countが1だけ変化する事を期待
+      expect { click_button "ユーザー登録" }.to change(User, :count).by(1)
+    end
+  end
 end
