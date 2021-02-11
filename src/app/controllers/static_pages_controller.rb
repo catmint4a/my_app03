@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @user = User.find_by(id: session[:user_id])
+    if current_user
+      @user = current_user
+    end
   end
   
   def help
