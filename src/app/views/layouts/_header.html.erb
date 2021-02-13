@@ -1,0 +1,19 @@
+<div class="container">
+  <%= link_to "ぽすと★いっと！", root_path, id: "logo" %>
+    <% @user = current_user %>
+    <% if current_user %>
+      <h2>
+        <%= @user.name %>さん、ようこそ！
+      </h2>
+    <% end %>      
+  <nav>
+    <ul class="nav navbar-nav navbar-right">
+      <li><%= link_to "ホーム",   root_path %></li>
+      <li><%= link_to "ヘルプ",   help_path %></li>
+      <li><%= link_to "このサイトについて",   about_path %></li>            
+      <li><%= link_to "ログイン", login_path %></li>
+      <li><%= link_to "ユーザー一覧", users_path %></li>
+      <li><%= link_to "ログアウト", logout_path, method: :delete %></li>
+    </ul>
+  </nav>
+</div>
