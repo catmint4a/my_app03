@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "${RAILS_ENV}" = "production" ]; then
-    bundle exec rails webpacker:compile
+    yarn add rails-ujs
     bundle exec rails assets:precompile
 fi
 
