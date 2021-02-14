@@ -10,7 +10,6 @@ WORKDIR /app
 COPY ./src /app
 RUN bundle config --local set path 'vendor/bundle' \
   && bundle install
-RUN rails webpacker:install
 RUN yarn add jquery@3.4.1 bootstrap@3.4.1
 
 COPY start.sh /start.sh
