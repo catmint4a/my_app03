@@ -11,8 +11,8 @@ require("jquery")
 import "bootstrap"
 import Rails from 'rails-ujs'
 Rails.start()
-//= require jquery_ujs
 //= require jquery
+//= require jquery_ujs
 //= require rails-ujs
 //= require turbolinks
 //= require_tree 
