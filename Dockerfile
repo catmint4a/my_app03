@@ -12,6 +12,7 @@ RUN bundle config --local set path 'vendor/bundle' \
   && bundle install
 
 RUN yarn add jquery@3.4.1 bootstrap@3.4.1
+RUN yarn add rails-ujs
 
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
