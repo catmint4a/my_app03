@@ -1,7 +1,7 @@
 #!/bin/sh
 
 if [ "${RAILS_ENV}" = "production" ]; then
-    yarn add rails-ujs
+    yarn install
     bundle exec rails assets:precompile
 fi
 
