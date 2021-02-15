@@ -10,11 +10,6 @@ WORKDIR /app
 COPY ./src /app
 RUN bundle config --local set path 'vendor/bundle' \
   && bundle install
-<<<<<<< HEAD
-RUN bundle exec bin/webpack
-RUN yarn add jquery@3.4.1 bootstrap@3.4.1
-=======
->>>>>>> 7c4648567985480c4e90de77ce72d09f63eee183
 
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
