@@ -1,2 +1,16 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
+// @import "bootstrap-sprockets";
+// @import "bootstrap";
+
+li .link-style-btn{
+//   cursor: pointer;
+  border: #222;
+  background-color: #222;
+  color: #0033cc;
+  display: inline;
+
+}
+.link-style-btn:hover{
+  text-decoration: underline;
+  color: #002080;
+  background-color: #111;
+}
