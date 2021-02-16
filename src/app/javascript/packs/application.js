@@ -10,7 +10,7 @@ require("@rails/activestorage").start()
 require("channels")
 import "bootstrap"
 
-//= require jquery/dist/jquery
+//= require jquery
 //= require_tree .
 
 // Uncomment to copy all static images under ../images to the output folder and reference
