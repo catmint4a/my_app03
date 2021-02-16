@@ -40,7 +40,7 @@ RSpec.describe "Sessions", type: :request do
       fill_in "メールアドレス", with: @user.email
       fill_in "パスワード", with: @user.password
       click_button "ログイン"
-      click_link "ログアウト"
+      click_on "ログアウト"
       expect(page).to have_content "ゲストログイン"
     end
   end
