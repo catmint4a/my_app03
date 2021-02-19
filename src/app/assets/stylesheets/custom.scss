@@ -1,18 +1,102 @@
-// @import "bootstrap-sprockets";
-// @import "bootstrap";
-#logo{
-  display: inline;
-}
-li .link-style-btn{
-//   cursor: pointer;
-  border: #222;
-  background-color: #222;
-  color: #0033cc;
-  display: inline;
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
+@mixin box_sizing {
+  -moz-box-sizing:    border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing:         border-box;
 }
-.link-style-btn:hover{
-  text-decoration: underline;
-  color: #002080;
-  background-color: #111;
+
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  display: block;
+  a { 
+    color: #55f
+  }
+  &:hover {
+    color: white;
+    text-decoration: none;
+  }
+}
+.navbar-fixed-top{
+  height: auto;
+  background-color: #114;
+}
+.navbar-inverse .navbar-nav  li  a {
+  color: #bbb;
+  padding: 10px 10px 5px 10px;
+}
+.username {
+  margin: 18px;
+  color: #e79;
+  width: 400px;
+  display: block;
+}
+main {
+  display: block;
+  margin: 80px;
+}
+
+.debug_dump {
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* forms */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
+
+#error_explanation {
+  color: red;
+  ul {
+    color: red;
+    margin: 0 0 30px 0;
+  }
+}
+
+.field_with_errors {
+  @extend .has-error;
+  .form-control {
+    color: $state-danger-text;
+  }
+}
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
 }
