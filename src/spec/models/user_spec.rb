@@ -98,7 +98,7 @@ RSpec.describe User, type: :model do
       fill_in "パスワードの確認", with: "foobar001"
     end
     it "should create a user" do
-      expect { click_button "ユーザー登録" }.to change(User, :count).by(1)
+      expect { click_button "登録" }.to change(User, :count).by(1)
     end
   end
 end
