@@ -24,11 +24,16 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by(name: params[:name])
-    # if @user.update(user_params)
-    #   # 更新に成功した場合を扱う。
-    # else
-    #   render 'edit'
-    # end
+  end
+
+  def update
+    @user = User.find_by(name: params[:name])
+    if @user.update(user_params)
+      flash[:success] = "ユーザー情報を変更しました"
+      redirect_to @user
+    else
+      render 'edit'
+    end
   end
 
   private
