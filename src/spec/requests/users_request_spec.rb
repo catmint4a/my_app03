@@ -37,18 +37,23 @@ RSpec.describe "Users", type: :request do
   end
   describe "GET /users" do
     before do
-      visit "/users"
+      # @user = FactoryBot.create(:user)
+      log_in_as(@user)
     end
     it "returns http success" do
       get "/users"
       expect(response).to have_http_status(:success)
     end
-    it "show first user in page" do
-      find_link("#{@user.name}")
-    end
-    it "show second user in page" do
-      find_link("#{@user2.name}")
-    end
+    # it "show first user in page" do
+    #   visit "/users"
+    #   find_link("#{@user.name}")
+    #   expect(page).to have_link @user.name
+    # end
+    # it "show second user in page" do
+    #   visit "/users"
+    #   find_link("#{@user2.name}")
+    #   expect(page).to have_link @user2.name
+    # end
 
   end
 end
