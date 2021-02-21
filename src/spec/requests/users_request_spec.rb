@@ -25,35 +25,27 @@ RSpec.describe "Users", type: :request do
       expect(response).to have_http_status(:success)
     end
   end
-  describe "GET /users/Aaron" do
-    it "returns http success" do
-      get "/users/#{@user.name}"
-      expect(response).to have_http_status(:success)
+  describe "users page as login user" do
+    before do
+      sign_in_as(@user)
     end
-    it "is link for current user" do
-      visit "/users/#{@user.name}"
+    it "returns http success" do
+      visit "/users"
       find_link("#{@user.name}")
     end
-  end
-  describe "GET /users" do
-    before do
-      # @user = FactoryBot.create(:user)
-      log_in_as(@user)
+    it "returns http success" do
+      visit "/users"
+      find_link("#{@user2.name}")
     end
+  end
+  describe "users page as login user" do
     it "returns http success" do
       get "/users"
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(302)
     end
-    # it "show first user in page" do
-    #   visit "/users"
-    #   find_link("#{@user.name}")
-    #   expect(page).to have_link @user.name
-    # end
-    # it "show second user in page" do
-    #   visit "/users"
-    #   find_link("#{@user2.name}")
-    #   expect(page).to have_link @user2.name
-    # end
-
+    it "returns http success" do
+      visit "/users"
+      expect(page).to_not have_content("#{@user.name}")
+    end
   end
 end
