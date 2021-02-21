@@ -4,7 +4,7 @@ class User < ApplicationRecord
   VALID_NAME_REGEX = /\A[a-z0-9]+\z/i
   validates :name,  presence: true,
                     uniqueness: true,
-                    length: { maximum: 50 },
+                    length: { maximum: 50 }#,
                     format: { with: VALID_NAME_REGEX }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
