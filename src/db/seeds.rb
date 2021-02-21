@@ -13,7 +13,7 @@ User.create(
   )
 
 99.times do |n|
-  name  = Faker::Name.name
+  name  = (Faker::Name.name).gsub(/ /, "").delete("/[\.']/")
   email = "example-#{n+1}@example.org"
   password = "password"
   User.create!(name:  name,
