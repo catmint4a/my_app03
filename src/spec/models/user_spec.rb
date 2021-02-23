@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
     email: "tester@example.com",
     password: "password",
     password_confirmation: "password",
+    admin: false
     )
   end
   it "is valid with a name, email" do    

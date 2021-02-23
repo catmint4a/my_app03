@@ -1,6 +1,26 @@
 require 'rails_helper'
 
 RSpec.feature "User", type: :feature do
+  before do
+    @user = User.new(
+    name: "Aaron",
+    email: "tester@example.com",
+    password: "password",
+    password_confirmation: "password",
+    admin: false
+    )
+    @user.save
+
+    @user2 = User.new(
+    name: "taro",
+    email: "taro@example.com",
+    password: "password",
+    password_confirmation: "password",
+    admin: true
+    )
+    @user2.save
+  end
+
   describe "with valid information" do
     before do
       visit "/signup"
@@ -15,13 +35,6 @@ RSpec.feature "User", type: :feature do
   end
   describe "link in home with login" do
     before do
-      @user = User.new(
-        name: "Aaron",
-        email: "tester@example.com",
-        password: "password",
-        password_confirmation: "password",
-        )
-      @user.save
       sign_in_as(@user)
       visit root_path
     end
@@ -59,6 +72,14 @@ RSpec.feature "User", type: :feature do
       fill_in "パスワードの確認", with: "passwords"
       click_button "変更を保存する"
       expect(page).to have_content "情報に誤りがあります"
+    end
+    it "is user name" do
+      visit users_path
+      find_link("#{@user.name}")
+    end
+    it "is other user name" do
+      visit "/users"
+      find_link("#{@user2.name}")
     end
   end
 end

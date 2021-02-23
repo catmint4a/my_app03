@@ -1,9 +1,13 @@
 <% provide(:title, "ユーザー一覧") %>
 <h1>ユーザー一覧</h1>
-  <% @users.each do |user| %>
-    <hr>
-    <li>
-      <%= link_to user.name, user %>
-    </li>
-    <hr>
-  <% end %>
+
+<%= will_paginate %>
+  <ul class="users">
+    <% @users.each do |user| %>
+      <li>
+        <%= link_to user.name, user %>
+      </li>
+      <hr>
+    <% end %>
+  </ul>
+<%= will_paginate %>

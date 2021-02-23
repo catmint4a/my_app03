@@ -3,39 +3,40 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   before do
     @user = User.new(
-    name: "Aaron",
-    email: "tester@example.com",
+    name: "Aaron2",
+    email: "tester2@example.com",
     password: "password",
     password_confirmation: "password",
+    admin: false
     )
     @user.save
 
     @user2 = User.new(
-    name: "taro",
-    email: "taro@example.com",
+    name: "taro2",
+    email: "taro2@example.com",
     password: "password",
     password_confirmation: "password",
+    admin: true
     )
     @user2.save
   end
-
   describe "GET /signup" do
     it "returns http success" do
       get "/signup"
       expect(response).to have_http_status(:success)
     end
   end
-  describe "users page as login user" do
+  describe "link in home with login" do
     before do
-      sign_in_as(@user)
+      30.times do
+        @users = FactoryBot.create(:users)
+      end
+      @user = FactoryBot.create(:user)
+      sign_in_as @user
     end
-    it "returns http success" do
-      visit "/users"
-      find_link("#{@user.name}")
-    end
-    it "returns http success" do
-      visit "/users"
-      find_link("#{@user2.name}")
+    it "show index include pagination" do
+      visit users_path
+      expect(page).to have_css ".pagination"
     end
   end
   describe "users page not login user" do
@@ -47,5 +48,19 @@ RSpec.describe "Users", type: :request do
       visit "/users"
       expect(page).to_not have_content("#{@user.name}")
     end
+  end
+  describe "admin param" do
+    it "is not allow the admin attribute to be edited via the web" do
+      patch "/users/#{@user.name}", params: { 
+                                  user: {
+                                  password:              "password",
+                                  password_confirmation: "password",
+                                  admin: false } }
+      expect(@user.reload.admin).to be_falsey
+    end
+    # it "can not destroy non-admin" do
+    #   sign_in_as @user
+    #   delete user_path(@user2)
+    # end
   end
 end
