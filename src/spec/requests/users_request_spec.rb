@@ -38,7 +38,7 @@ RSpec.describe "Users", type: :request do
       find_link("#{@user2.name}")
     end
   end
-  describe "users page as login user" do
+  describe "users page not login user" do
     it "returns http success" do
       get "/users"
       expect(response).to have_http_status(302)
