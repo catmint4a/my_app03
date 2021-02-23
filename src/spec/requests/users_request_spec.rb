@@ -3,57 +3,64 @@ require 'rails_helper'
 RSpec.describe "Users", type: :request do
   before do
     @user = User.new(
-    name: "Aaron",
-    email: "tester@example.com",
+    name: "Aaron2",
+    email: "tester2@example.com",
     password: "password",
     password_confirmation: "password",
+    admin: false
     )
     @user.save
 
     @user2 = User.new(
-    name: "taro",
-    email: "taro@example.com",
+    name: "taro2",
+    email: "taro2@example.com",
     password: "password",
     password_confirmation: "password",
+    admin: true
     )
     @user2.save
   end
-
   describe "GET /signup" do
     it "returns http success" do
       get "/signup"
       expect(response).to have_http_status(:success)
     end
   end
-  describe "GET /users/Aaron" do
-    it "returns http success" do
-      get "/users/#{@user.name}"
-      expect(response).to have_http_status(:success)
+  describe "link in home with login" do
+    before do
+      30.times do
+        @users = FactoryBot.create(:users)
+      end
+      @user = FactoryBot.create(:user)
+      sign_in_as @user
     end
-    it "is link for current user" do
-      visit "/users/#{@user.name}"
-      find_link("#{@user.name}")
+    it "show index include pagination" do
+      visit users_path
+      expect(page).to have_css ".pagination"
     end
   end
-  describe "GET /users" do
-    before do
-      # @user = FactoryBot.create(:user)
-      log_in_as(@user)
-    end
+  describe "users page not login user" do
     it "returns http success" do
       get "/users"
-      expect(response).to have_http_status(:success)
+      expect(response).to have_http_status(302)
     end
-    # it "show first user in page" do
-    #   visit "/users"
-    #   find_link("#{@user.name}")
-    #   expect(page).to have_link @user.name
+    it "returns http success" do
+      visit "/users"
+      expect(page).to_not have_content("#{@user.name}")
+    end
+  end
+  describe "admin param" do
+    it "is not allow the admin attribute to be edited via the web" do
+      patch "/users/#{@user.name}", params: { 
+                                  user: {
+                                  password:              "password",
+                                  password_confirmation: "password",
+                                  admin: false } }
+      expect(@user.reload.admin).to be_falsey
+    end
+    # it "can not destroy non-admin" do
+    #   sign_in_as @user
+    #   delete user_path(@user2)
     # end
-    # it "show second user in page" do
-    #   visit "/users"
-    #   find_link("#{@user2.name}")
-    #   expect(page).to have_link @user2.name
-    # end
-
   end
 end

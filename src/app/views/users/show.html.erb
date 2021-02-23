@@ -1,6 +1,10 @@
 <% provide(:title, @user.name) %>
 <hr>
 <h1>
-<%= link_to @user.name, @user.name %>, <%= @user.email %>
+    <%= link_to @user.name, @user.name %>, <%= @user.email %>
 </h1>
+<% if current_user.admin? && !current_user?(@user) %>
+| <%= link_to "ユーザーを削除", @user, method: :delete,
+                            data: { confirm: "本当に削除してよろしいですか？" } %>
+<% end %>
 <hr>

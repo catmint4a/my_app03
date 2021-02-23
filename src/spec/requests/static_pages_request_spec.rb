@@ -42,5 +42,20 @@ RSpec.describe "StaticPages", type: :request do
     it "guest login link" do
       expect(page).to have_link 'ゲストログイン'
     end
-  end
+    it "without users link" do
+      expect(page).to_not have_link 'ユーザー一覧'
+    end
+    it "without acount link" do
+      expect(page).to_not have_link 'アカウント'
+    end
+    it "without profile link" do
+      expect(page).to_not have_link 'プロフィール'
+    end
+    it "without edit link" do
+      expect(page).to_not have_link 'ユーザー情報'
+    end
+    it "without logout link" do
+      expect(page).to_not have_link 'ログアウト'
+    end
+  end  
 end

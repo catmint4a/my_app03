@@ -7,6 +7,7 @@ RSpec.describe User, type: :model do
     email: "tester@example.com",
     password: "password",
     password_confirmation: "password",
+    admin: false
     )
   end
   it "is valid with a name, email" do    
@@ -87,18 +88,5 @@ RSpec.describe User, type: :model do
   it "is password a minimum length" do
     @user.password = @user.password_confirmation = "v" * 7
     expect(@user).to be_invalid
-  end
-
-  describe "with valid information" do
-    before do
-      visit "/signup"
-      fill_in "ユーザー名",       with: "ExampleUser"
-      fill_in "メールアドレス",   with: "user@example.com"
-      fill_in "パスワード",       with: "foobar001"
-      fill_in "パスワードの確認", with: "foobar001"
-    end
-    it "should create a user" do
-      expect { click_button "登録" }.to change(User, :count).by(1)
-    end
   end
 end

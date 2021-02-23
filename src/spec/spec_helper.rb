@@ -20,6 +20,8 @@ RSpec.configure do |config|
   ENV["RAILS_ENV"] ||= 'test'
   require File.expand_path("../../config/environment", __FILE__)
   require 'rspec/rails'
+  require 'capybara/rails'
+  require 'capybara/rspec'
   config.expect_with :rspec do |expectations|
     # This option will default to `true` in RSpec 4. It makes the `description`
     # and `failure_message` of custom matchers include text for helper methods
@@ -98,4 +100,5 @@ RSpec.configure do |config|
 =end
    
   config.include Capybara::DSL
+  config.include Capybara::RSpecMatchers, :type => :request
 end

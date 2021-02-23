@@ -6,6 +6,9 @@
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
+.container {
+  margin: auto;
+}
 .center{
   text-align: center;
 }
@@ -35,11 +38,20 @@
   color: #bbb;
   padding: 18px 10px 5px 10px;
 }
+.dropdown-menu {
+  background-color: #114;
+  li a{
+    &:hover {
+      background-color: #114;
+      color: white;
+    }
+  }
+}
 .username {
   margin: 18px;
   color: #e79;
-  width: 400px;
-  display: block;
+  width: 300;
+  display: inline-block;
 }
 main {
   display: block;

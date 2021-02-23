@@ -9,5 +9,16 @@ User.create(
     name: "sample",
     email: "sample@example.com",
     password: "password",
-    password_confirmation: "password"
+    password_confirmation: "password",
+    admin: true
   )
+
+99.times do |n|
+  name  = (Faker::Name.name).gsub(/ /, "").delete("/[\.']/")
+  email = "example-#{n+1}@example.org"
+  password = "password"
+  User.create!(name:  name,
+                email: email,
+                password:              password,
+                password_confirmation: password)
+end
