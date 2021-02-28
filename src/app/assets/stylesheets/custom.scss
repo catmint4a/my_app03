@@ -6,9 +6,9 @@
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
-.container {
-  margin: auto;
-}
+// .container {
+//   margin: auto;
+// }
 .center{
   text-align: center;
 }
@@ -55,7 +55,8 @@
 }
 main {
   display: block;
-  margin: 80px;
+  margin-top: 60px;
+  margin-left: 20px;
 }
 
 .debug_dump {
