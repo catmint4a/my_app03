@@ -20,6 +20,7 @@ RSpec.describe UserMailer, type: :mailer do
       end
       mail_body = part.body.raw_source
       expect(mail_body).to include("パスワードの再設定用リンク")
+      expect(mail_body).to include(CGI.escape(@user.email))
     end
   end
 

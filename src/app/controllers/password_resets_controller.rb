@@ -43,16 +43,11 @@ class PasswordResetsController < ApplicationController
 
     def get_user
       @user = User.find_by(email: params[:email])
-      logger.debug("[debug]get_user #{(@user && @user.authenticated?(:reset, params[:id]))}")
-      logger.debug("[debug]get_user #{@user}")
     end
 
     def valid_user
-      logger.debug("[debug] #{(@user && @user.authenticated?(:reset, params[:id]))}")
-      logger.debug("[debug] #{@user}")
-      # logger.debug("[debug] #{(@user.authenticated?(:reset, params[:id]))}")
       unless (@user && @user.authenticated?(:reset, params[:id]))
-        flash[:danger] = "ユーザーは有効ではありません"
+        flash[:danger] = "ユーザーが無効、もしくは情報が間違っています"
         redirect_to root_url
       end 
     end
