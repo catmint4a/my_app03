@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :reset_token
+  has_many :microposts, dependent: :destroy
   before_save  { email.downcase! }
   VALID_NAME_REGEX = /\A[a-zA-Z0-9]+\z/i
   validates :name,  presence: true,
@@ -46,8 +47,6 @@ class User < ApplicationRecord
 
   def create_reset_digest
     self.reset_token = User.new_token
-    # update_attribute(:reset_digest, User.digest(reset_token))
-    # update_attribute(:reset_sent_at, Time.zone.now)
     update_columns(reset_digest: User.digest(reset_token), reset_sent_at: Time.zone.now)
   end
 

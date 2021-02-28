@@ -58,9 +58,5 @@ RSpec.describe "Users", type: :request do
                                   admin: false } }
       expect(@user.reload.admin).to be_falsey
     end
-    # it "can not destroy non-admin" do
-    #   sign_in_as @user
-    #   delete user_path(@user2)
-    # end
   end
 end
