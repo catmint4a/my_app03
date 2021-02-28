@@ -12,8 +12,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(name: params[:name])
-    @microposts = @user.microposts.paginate(page: params[:page])
+    if User.find_by(name: params[:name])
+      @user = User.find_by(name: params[:name])
+      @microposts = @user.microposts.paginate(page: params[:page])
+    else
+      flash[:danger] = "ページが存在しません"
+      redirect_to root_path
+    end
   end
 
   def create
