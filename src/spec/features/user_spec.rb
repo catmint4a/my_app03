@@ -71,7 +71,7 @@ RSpec.feature "User", type: :feature do
       fill_in "パスワード",       with: "password"
       fill_in "パスワードの確認", with: "passwords"
       click_button "変更を保存する"
-      expect(page).to have_content "情報に誤りがあります"
+      expect(page).to have_content "入力された情報は適切ではありません"
     end
     it "is user name" do
       visit users_path
