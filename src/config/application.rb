@@ -21,6 +21,8 @@ module App
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.yml').to_s]
     Faker::Config.locale = :en
 
+    config.assets.initialize_on_precompile = false
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
