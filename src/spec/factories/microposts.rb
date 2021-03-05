@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :micropost do
     content { "MyText" }
-    user { "Aaron" }
+    # user { "Aaron" }
     association :user
   end
 

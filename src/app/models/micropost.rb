@@ -10,6 +10,10 @@ class Micropost < ApplicationRecord
                                     message: "画像は3MB以下のものを指定してください"}
 
   def display_image
-    image.variant(resize_to_limit: [500, 500])
+    begin
+      image.variant(resize_to_limit: [500, 500])      
+    rescue => exception      
+      return image
+    end
   end
 end
