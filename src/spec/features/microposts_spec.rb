@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.feature "Microposts", type: :feature do
-  # pending "add some scenarios (or delete) #{__FILE__}"
   before do
     @user = FactoryBot.create(:user) 
     @micropost = @user.microposts.create(content: "first post")
@@ -10,7 +9,6 @@ RSpec.feature "Microposts", type: :feature do
       @user.microposts.create!(content: content)
     end
   end
-
 
   describe "post test" do
     before do
@@ -21,7 +19,7 @@ RSpec.feature "Microposts", type: :feature do
       click_on "投稿"
       expect(has_css?('.alert-danger')).to be_truthy
     end
-    it "is valid  post" do
+    it "is valid post" do
       valid_post = "test post"
       fill_in "micropost_content", with: valid_post
       click_on "投稿"
