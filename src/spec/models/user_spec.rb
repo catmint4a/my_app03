@@ -89,4 +89,22 @@ RSpec.describe User, type: :model do
     @user.password = @user.password_confirmation = "v" * 7
     expect(@user).to be_invalid
   end
+
+  describe "follow and unfollow" do
+    let(:user){ FactoryBot.create(:users) }
+    let(:other_user){ FactoryBot.create(:users) }
+
+    before { user.follow(other_user) }
+
+    describe "follow" do
+      it "follow success" do
+        expect(user.following?(other_user)).to be_truthy
+        expect(other_user.followers.include?(user)).to be_truthy
+      end
+      it "unfollow success" do
+        user.unfollow(other_user)
+        expect(user.following?(other_user)).to be_falsey
+      end
+    end
+  end
 end
