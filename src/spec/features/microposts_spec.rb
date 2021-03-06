@@ -23,7 +23,7 @@ RSpec.feature "Microposts", type: :feature do
       valid_post = "test post"
       fill_in "micropost_content", with: valid_post
       click_on "投稿"
-      expect(page).to have_content valid_post
+      expect(page).to have_content "投稿しました"
     end
   end
 end
