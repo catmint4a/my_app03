@@ -30,5 +30,6 @@ module App
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.action_view.embed_authenticity_token_in_remote_forms = true
   end
 end

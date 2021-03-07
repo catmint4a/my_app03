@@ -6,6 +6,8 @@
     <% @users.each do |user| %>
       <li>
         <%= link_to user.name, user %>
+          <% @user = user %>
+        <p><%= render 'follow_form_mini' %></p>
       </li>
       <hr>
     <% end %>
