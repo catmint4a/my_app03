@@ -15,5 +15,7 @@ Rails.application.routes.draw do
   end
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
-  resources :relationships,        only: [:create, :destroy]
+  resources :relationships,        only: [:create, :destroy, :create_mini, :destroy_mini]
+  post   '/relationships_mini',   to: 'relationships#create_mini'
+  delete '/relationships_mini/:id',  to: 'relationships#destroy_mini'
 end
