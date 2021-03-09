@@ -8,3 +8,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: パスワードの確認
+  will_paginate:
+    previous_label: 前
+    next_label: 次
+    page_gap: …
