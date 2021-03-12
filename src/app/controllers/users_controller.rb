@@ -39,6 +39,7 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find_by(name: params[:name])
+    @user.image.attach(params[:user][:image])
     if @user.update(user_params)
       flash[:success] = "ユーザー情報を変更しました"
       redirect_to @user
@@ -70,7 +71,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password,
+      params.require(:user).permit(:name, :email, :password, :image,
                                    :password_confirmation)
     end
 

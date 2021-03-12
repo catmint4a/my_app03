@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :reset_token
+  has_one_attached :image
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
                                   foreign_key: "follower_id",
@@ -23,9 +24,21 @@ class User < ApplicationRecord
   VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
   validates :password, presence: true, length: {minimum: 8 },
                        format: { with: VALID_PASSWORD_REGEX }
+  validates :image , content_type: { in: %W[image/jpeg image/gif image/png],
+                        message: "有効な画像ファイルを指定してください" },
+                size: { less_than: 3.megabytes,
+                        message: "画像は3MB以下のものを指定してください"}
 
   def to_param
     name
+  end
+
+  def display_user_image
+    begin
+      image.variant(resize_to_limit: [60, 60])      
+    rescue => exception      
+      return image
+    end
   end
 
   def User.new_token

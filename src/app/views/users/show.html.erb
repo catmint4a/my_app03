@@ -2,6 +2,7 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
+      <%= image_tag @user.display_user_image if @user.image.attached? %>
       <h1>
         <%= @user.name %>
       </h1>
@@ -20,10 +21,12 @@
   <div class="col-md-8">
   <%= render 'follow_form' if logged_in? %>
   <% if @user.microposts.any? %>
-      <h3>投稿 (<%= @user.microposts.count %>)</h3>
-      <ol class="microposts">
-      <%= render @microposts %>
-      </ol>
+    <h3>投稿 (<%= @user.microposts.count %>)</h3>
+    <ol class="microposts">
+    <% @microposts.each do |micropost| %>
+      <%= render micropost %>
+    <% end %>
+    </ol>
       <%= will_paginate @microposts %>
   <% end %>
   </div>

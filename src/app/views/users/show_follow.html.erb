@@ -22,7 +22,10 @@
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
-        <%= render @users %>
+        <% @users.each do |user| %>
+          <%= image_tag user.display_user_image if user.image.attached? %>
+          <%= render user %>
+        <% end %>
       </ul>
       <%= will_paginate %>
     <% end %>

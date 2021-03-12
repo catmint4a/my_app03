@@ -1,4 +1,5 @@
 <li id="micropost-<%= micropost.id %>">
+  <%= image_tag micropost.user.display_user_image if micropost.user.image.attached? %>
   <span class="user"><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content">
     <%= micropost.content %>

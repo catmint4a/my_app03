@@ -1,3 +1,8 @@
+<div id = "user_info_image">
+  <%= image_tag current_user.display_user_image if current_user.image.attached? %>
+</div>
 <h1><%= current_user.name %></h1>
-<span><%= link_to "プロフィール", current_user %></span>
+<p>
+  <span><%= link_to "プロフィール", current_user %></span>
+</p>
 <span><%= pluralize(current_user.microposts.count, "  件の投稿") %></span>
