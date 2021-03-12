@@ -55,7 +55,7 @@
 }
 main {
   display: block;
-  margin-top: 60px;
+  margin-top: 70px;
   margin-left: 20px;
 }
 
@@ -123,11 +123,12 @@ input {
   padding: 0;
   li {
     padding: 10px 0;
-    border-top: 1px solid #e8e8e8;
+    border-bottom: 1px solid #e8e8e8;
   }
   .user {
     margin-top: 5em;
     padding-top: 0;
+    display: inline;
   }
   .content {
     display: block;
@@ -135,7 +136,7 @@ input {
     margin-left: 60px;
     margin-bottom: 10px;
     img {
-      display: block;
+      display: inline-block;
       padding: 5px 0;
     }
   }
@@ -178,6 +179,22 @@ span.image {
   margin-top: 15px;
 }
 
+.user_info {
+  width: auto;
+  h1 {
+    display :inline;
+    margin: 20px 10px 20px 10px;
+  }
+}
+img {
+  // display :inline-block;
+  margin: 5px;
+}
+
+.col-md-4 {
+  width: auto;
+}
+
 .stats {
   overflow: auto;
   margin-top: 0;
@@ -218,4 +235,12 @@ span.image {
 
 .btn-mini {
   width:120px;
+}
+
+.col-md-8 h3 {
+  margin-top: 80px;
+}
+
+.microposts .content, .microposts .timestamp { 
+  margin-left: 75px;
 }

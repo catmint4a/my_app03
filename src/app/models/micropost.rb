@@ -6,8 +6,8 @@ class Micropost < ApplicationRecord
   validates :content, presence: true, length: { maximum: 140 }
   validates :image , content_type: { in: %W[image/jpeg image/gif image/png],
                                     message: "有効な画像ファイルを指定してください" },
-                            size: { less_than: 3.megabytes,
-                                    message: "画像は3MB以下のものを指定してください"}
+                            size: { less_than: 5.megabytes,
+                                    message: "画像は5MB以下のものを指定してください"}
 
   def display_image
     begin
