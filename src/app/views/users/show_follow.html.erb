@@ -2,20 +2,15 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      
+      <%= image_tag @user.display_user_image if @user.image.attached? %>
       <h1><%= @user.name %></h1>
+      <br>
       <span><%= link_to "プロフィール", @user %></span>
+      <br>
       <span><b>投稿：</b> <%= @user.microposts.count %></span>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
-      <% if @users.any? %>
-        <div class="user_avatars">
-          <% @users.each do |user| %>
-            <%= user.name %>
-          <% end %>
-        </div>
-      <% end %>
     </section>
   </aside>
   <div class="col-md-8">
@@ -23,7 +18,11 @@
     <% if @users.any? %>
       <ul class="users follow">
         <% @users.each do |user| %>
-          <%= image_tag user.display_user_image if user.image.attached? %>
+          <% if user.image.attached? %>
+            <%= image_tag user.display_user_image %>
+          <% else %>
+            <%= image_tag "default.png" %>
+          <% end %>
           <%= render user %>
         <% end %>
       </ul>

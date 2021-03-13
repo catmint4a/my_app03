@@ -17,6 +17,7 @@
       <%= f.label :password_confirmation, "パスワードの確認" %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
+      <%= f.label :image, "プロフィール画像の選択" %>
       <span class="image">
         <%= f.file_field :image, accept: "image/jpeg, image/gif, image/png" %>
       </span>

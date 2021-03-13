@@ -12,6 +12,9 @@
 .center{
   text-align: center;
 }
+header img {
+  float: left;
+}
 #logo {
   float: left;
   margin-right: 10px;
@@ -181,9 +184,10 @@ span.image {
 
 .user_info {
   width: auto;
+  margin-bottom: 20px;
   h1 {
-    display :inline;
-    margin: 20px 10px 20px 10px;
+    display :block;
+    margin: 20px 10px 10px 10px;
   }
 }
 img {

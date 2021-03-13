@@ -1,6 +1,9 @@
 <div class="container">
   <% @user = current_user %>
   <%= link_to "ぽすと★いっと！", root_path, id: "logo" %>
+  <% if logged_in? %>
+    <%= image_tag current_user.display_user_symbol if current_user.image.attached? %>
+  <% end %>
   <nav>
     <ul class="nav navbar-nav navbar-right" >
       <li><%= link_to "ホーム",   root_path %></li>

@@ -59,4 +59,9 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+
+  config.serve_static_assets = true
+  config.assets.compile = true
+  config.action_controller.asset_host = "file://#{::Rails.root}/public"
+  config.assets.prefix = 'assets_test'
 end
