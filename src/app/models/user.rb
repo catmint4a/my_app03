@@ -41,6 +41,14 @@ class User < ApplicationRecord
     end
   end
 
+  def display_user_symbol
+    begin
+      image.variant(resize_to_limit: [40, 40])      
+    rescue => exception      
+      return image
+    end
+  end
+
   def User.new_token
     SecureRandom.urlsafe_base64
   end

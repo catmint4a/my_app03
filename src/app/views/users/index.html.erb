@@ -5,7 +5,11 @@
   <ul class="users">
     <% @users.each do |user| %>
       <li>
-        <%= image_tag user.display_user_image if user.image.attached? %>
+        <% if user.image.attached? %>
+          <%= image_tag user.display_user_image %>
+        <% else %>
+          <%= image_tag "default.png" %>
+        <% end %>
         <%= link_to user.name, user %>
           <% @user = user %>
         <p><%= render 'follow_form_mini' %></p>
