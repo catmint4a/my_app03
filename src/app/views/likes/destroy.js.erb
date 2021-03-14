@@ -1,0 +1,2 @@
+$("#micropost_<%= @micropost.id %>").html("<%= escape_javascript(render('microposts/like')) %>");
+$("#likes_count_<%= @micropost.id %>").html('<%= @micropost.likes.count %>');
