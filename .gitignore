@@ -37,4 +37,4 @@ src/.yarn-integrity
 
 src/db/mysql_data
 
-.DS_Store
+*.DS_Store
