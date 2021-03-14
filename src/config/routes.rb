@@ -18,5 +18,7 @@ Rails.application.routes.draw do
   resources :relationships,        only: [:create, :destroy, :create_mini, :destroy_mini]
   post   '/relationships_mini',   to: 'relationships#create_mini'
   delete '/relationships_mini/:id',  to: 'relationships#destroy_mini'
-  post '/homes/guest_sign_in', to: 'static_pages#new_guest'
+  post '/guest_sign_in', to: 'static_pages#new_guest'
+  post '/likes/:id/create', to: 'likes#create'
+  delete '/likes/:id/destroy', to: 'likes#destroy'
 end

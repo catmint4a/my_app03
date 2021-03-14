@@ -1,6 +1,4 @@
-
-  <%= link_to user.name, user %>
-
+<%= link_to user.name, user %>
 <span>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "ユーザーを削除", user, method: :delete,

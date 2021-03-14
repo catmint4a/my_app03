@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   attr_accessor :remember_token, :reset_token
+  has_many :likes, dependent: :destroy
   has_one_attached :image
   has_many :microposts, dependent: :destroy
   has_many :active_relationships, class_name: "Relationship",
