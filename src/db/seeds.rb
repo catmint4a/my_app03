@@ -13,6 +13,14 @@ User.create(
     admin: true
   )
 
+guest_user = User.create(
+    name: "guestuser",
+    email: "guest@example.com",
+    password: "password",
+    password_confirmation: "password",
+    admin: true
+  )
+
 99.times do |n|
   name  = (Faker::Name.name).gsub(/ /, "").delete("/[\.']/")
   email = "example-#{n+1}@example.org"
@@ -35,3 +43,9 @@ following = users[2..50]
 followers = users[3..40]
 following.each { |followed| user.follow(followed) }
 followers.each { |follower| follower.follow(user) }
+
+user2 = guest_user
+following = users[3..50]
+followers = users[4..40]
+following.each { |followed| user2.follow(followed) }
+followers.each { |follower| follower.follow(user2) }
