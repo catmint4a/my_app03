@@ -1,5 +1,5 @@
 <% @relationship_id = Relationship.find_by(followed_id: @user.id, follower_id: current_user.id).id %>
-<%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id),
+<%= form_with(model: current_user.active_relationships.find_by(followed_id: @user.id), 
             html: { method: :delete }, url: "/relationships_mini/#{@relationship_id}", data: {remote: true}) do |f| %>
   <%= f.submit "フォロー解除", class: "btn btn-mini" %>
 <% end %>
