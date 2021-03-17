@@ -21,4 +21,5 @@ Rails.application.routes.draw do
   post '/guest_sign_in', to: 'static_pages#new_guest'
   post '/likes/:id/create', to: 'likes#create'
   delete '/likes/:id/destroy', to: 'likes#destroy'
+  get '/likes', to: 'microposts#like'
 end

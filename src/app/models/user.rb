@@ -95,6 +95,11 @@ class User < ApplicationRecord
     Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)    
   end
 
+
+  # def liked_feed
+  #   @liked_posts = Like.find_by(micropost_id: current_user.microposts.id)
+  # end
+
   def follow(other_user)
     following << other_user
   end
