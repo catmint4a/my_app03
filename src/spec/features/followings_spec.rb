@@ -16,13 +16,13 @@ RSpec.feature "Followings", type: :feature do
     click_on "フォロー"
     expect(user.following.count).to eq 10
     user.following.each do |u|
-      expect(page).to have_link u.name, href: user_path(u)
+      expect(page).to have_link u.user_name, href: user_path(u)
     end
 
     click_on "フォロワー"
     expect(user.followers.count).to eq 10
     user.followers.each do |u|
-      expect(page).to have_link u.name, href: user_path(u)
+      expect(page).to have_link u.user_name, href: user_path(u)
     end
   end
 

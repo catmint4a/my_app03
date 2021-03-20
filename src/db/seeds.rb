@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.create(
     name: "sample",
+    user_name: "サンプルさん",
     email: "sample@example.com",
     password: "password",
     password_confirmation: "password",
@@ -15,6 +16,7 @@ User.create(
 
 guest_user = User.create(
     name: "guestuser",
+    user_name: "ゲストさん",
     email: "guest@example.com",
     password: "password",
     password_confirmation: "password",
@@ -26,6 +28,7 @@ guest_user = User.create(
   email = "example-#{n+1}@example.org"
   password = "password"
   User.create!(name:  name,
+                user_name: name.upcase,
                 email: email,
                 password:              password,
                 password_confirmation: password)
@@ -49,3 +52,19 @@ following = users[3..50]
 followers = users[4..40]
 following.each { |followed| user2.follow(followed) }
 followers.each { |follower| follower.follow(user2) }
+
+microposts = Micropost.all
+microposts_id = microposts[3..30]
+
+microposts_id.each { |micropost|
+  like = Like.new(
+    user_id: user.id,
+    micropost_id: micropost.id,
+  )
+  like.save
+  like2 = Like.new(
+      user_id: user2.id,
+      micropost_id: micropost.id,
+    )
+    like2.save
+}

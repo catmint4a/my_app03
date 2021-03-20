@@ -1,7 +1,13 @@
 <div id = "user_info_image">
-  <%= image_tag current_user.display_user_image if current_user.image.attached? %>
+  <% if current_user.image.attached? %>
+          <%= image_tag current_user.display_user_image %>
+  <% else %>
+    <%= image_tag "default.png" %>
+  <% end %>
 </div>
-<h1><%= current_user.name %></h1>
+<div class="user_name">
+  <h1><%= current_user.user_name %></h1>
+</div>
 <p>
   <span><%= link_to "プロフィール", current_user %></span>
 </p>

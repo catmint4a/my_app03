@@ -3,8 +3,9 @@ require 'rails_helper'
 RSpec.feature "User", type: :feature do
   before do
     @user = User.new(
-    name: "Aaron",
-    email: "tester@example.com",
+    name: "Aarons",
+    user_name: "AARONS",
+    email: "testers@example.com",
     password: "password",
     password_confirmation: "password",
     admin: false
@@ -13,6 +14,7 @@ RSpec.feature "User", type: :feature do
 
     @user2 = User.new(
     name: "taro",
+    user_name: "たろう",
     email: "taro@example.com",
     password: "password",
     password_confirmation: "password",
@@ -24,8 +26,9 @@ RSpec.feature "User", type: :feature do
   describe "with valid information" do
     before do
       visit "/signup"
-      fill_in "ユーザー名",       with: "ExampleUser"
-      fill_in "メールアドレス",   with: "user@example.com"
+      fill_in "アカウント名",       with: "ExampleUser"
+      fill_in "ユーザー名",     with: "テストユーザー"
+      fill_in "メールアドレス",   with: "user01@example.com"
       fill_in "パスワード",       with: "foobar001"
       fill_in "パスワードの確認", with: "foobar001"
     end
@@ -56,7 +59,8 @@ RSpec.feature "User", type: :feature do
     it "change user profile successful" do
       visit root_path
       click_link "ユーザー情報"
-      fill_in "ユーザー名", with: "AaronSpec"
+      fill_in "アカウント名", with: "AaronSpec"
+      fill_in "ユーザー名", with: "アーロンスペック"
       fill_in "メールアドレス", with: "AaronSpec@example.com"
       fill_in "パスワード",       with: "password"
       fill_in "パスワードの確認", with: "password"
@@ -66,7 +70,8 @@ RSpec.feature "User", type: :feature do
     it "change user profile failed" do
       visit root_path
       click_link "ユーザー情報"
-      fill_in "ユーザー名", with: "AaronSpec"
+      fill_in "アカウント名", with: "AaronSpec"
+      fill_in "ユーザー名", with: "アーロンスペック"
       fill_in "メールアドレス", with: "AaronSpec@example.com"
       fill_in "パスワード",       with: "password"
       fill_in "パスワードの確認", with: "passwords"
@@ -75,11 +80,11 @@ RSpec.feature "User", type: :feature do
     end
     it "is user name" do
       visit users_path
-      find_link("#{@user.name}")
+      find_link("#{@user.user_name}")
     end
     it "is other user name" do
       visit "/users"
-      find_link("#{@user2.name}")
+      find_link("#{@user2.user_name}")
     end
   end
 end

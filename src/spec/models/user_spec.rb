@@ -3,7 +3,8 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
   before do
     @user = User.new(
-    name: "Aaron",
+    name: "maria",
+    user_name: "マリア",
     email: "tester@example.com",
     password: "password",
     password_confirmation: "password",
@@ -17,6 +18,7 @@ RSpec.describe User, type: :model do
   it "is invalid with a no name, no email" do
     user = User.new(
       name: "",
+      user_name: "",
       email: "",
     )
     expect(user).to be_invalid
@@ -24,13 +26,15 @@ RSpec.describe User, type: :model do
   it "is invalid with a no name" do
     user = User.new(
       name: "",
+      user_name: "USER",
       email: "tester@example.com",
     )
     expect(user).to be_invalid
   end
   it "is invalid with a no email" do
     user = User.new(
-      name: "Aaron",
+      name: "user",
+      user_name: "USER",
       email: "",
     )
     expect(user).to be_invalid
@@ -38,13 +42,15 @@ RSpec.describe User, type: :model do
   it "is invalid with a too long name" do
     user = User.new(
       name: "a" * 51,
+      user_name: "USER",
       email: "tester@example.com",
     )
     expect(user).to be_invalid
   end
   it "is invalid with a too long email" do
     user = User.new(
-      name: "Aaron",
+      name: "smith",
+      user_name: "USER",
       email: "a" * 244 + "@example.com",
     )
     expect(user).to be_invalid
@@ -52,10 +58,12 @@ RSpec.describe User, type: :model do
   it "is invalid not unique email " do
     user = User.new(
       name: "Aaron",
+      user_name: "USER",
       email: "tester@example.com",
     )
     other_user = User.new(
       name: "joe",
+      user_name: "USER",
       email: "tesTer@example.com",
     )
     other_user.email.downcase!
@@ -64,11 +72,13 @@ RSpec.describe User, type: :model do
   end
   it "is invalid not unique name " do
     user = User.new(
-      name: "Aaron",
+      name: "Dot",
+      user_name: "USER",
       email: "tester@example.com",
     )
     other_user = User.new(
-      name: "Aaron",
+      name: "Dot",
+      user_name: "USER",
       email: "teser2@example.com",
     )
     user.save
@@ -76,7 +86,8 @@ RSpec.describe User, type: :model do
   end
   it "is invalid email format" do
     user = User.new(
-      name: "Aaron",
+      name: "Jonathan",
+      user_name: "USER",
       email: "tester@example,com",
     )
     expect(user).to be_invalid

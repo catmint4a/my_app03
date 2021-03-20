@@ -6,7 +6,7 @@
   <% else %>
     <%= image_tag "default.png" %>
   <% end %>
-  <span class="user"><%= link_to @micropost.user.name, @micropost.user %></span>
+  <span class="user"><%= link_to @micropost.user.user_name, @micropost.user %></span>
   <span class="content">
     <%= @micropost.content %>
     <br>

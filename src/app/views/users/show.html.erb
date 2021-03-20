@@ -2,10 +2,14 @@
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <%= image_tag @user.display_user_image if @user.image.attached? %>
-      <h1>
-        <%= @user.name %>
-      </h1>
+      <% if current_user.image.attached? %>
+          <%= image_tag current_user.display_user_image %>
+      <% else %>
+        <%= image_tag "default.png" %>
+      <% end %>
+      <div class="user_name">
+        <h1><%= @user.user_name %></h1>
+      </div>
       <li>
         <% if current_user.admin? && !current_user?(@user) %>
         | <%= link_to "ユーザーを削除", @user, method: :delete,

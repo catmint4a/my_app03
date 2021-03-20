@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "登録ありがとうございます！"
-      redirect_to @user
+      redirect_to root_path
     else
       render 'new'
     end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     @user.image.attach(params[:user][:image])
     if @user.update(user_params)
       flash[:success] = "ユーザー情報を変更しました"
-      redirect_to @user
+      redirect_to root_path
     else
       render 'edit'
     end
@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :image,
+      params.require(:user).permit(:name, :email, :password, :image, :user_name,
                                    :password_confirmation)
     end
 
