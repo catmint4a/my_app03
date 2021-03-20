@@ -17,6 +17,8 @@ class User < ApplicationRecord
                     uniqueness: true,
                     length: { maximum: 50 },
                     format: { with: VALID_NAME_REGEX }
+  validates :user_name,  presence: true,
+                    length: { maximum: 30 }
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   validates :email, presence: true, length: { maximum: 255 },
                     uniqueness: true,
@@ -94,11 +96,6 @@ class User < ApplicationRecord
     following_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
     Micropost.where("user_id IN (#{following_ids}) OR user_id = :user_id", user_id: id)    
   end
-
-
-  # def liked_feed
-  #   @liked_posts = Like.find_by(micropost_id: current_user.microposts.id)
-  # end
 
   def follow(other_user)
     following << other_user

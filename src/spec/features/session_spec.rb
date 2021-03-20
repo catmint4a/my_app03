@@ -18,6 +18,7 @@ RSpec.feature "Sessions", type: :feature do
     before do
       @user = User.new(
       name: "Bob",
+      user_name: "ボブ",
       email: "Bob@example.com",
       password: "password",
       password_confirmation: "password",
@@ -30,7 +31,7 @@ RSpec.feature "Sessions", type: :feature do
       fill_in "メールアドレス", with: @user.email
       fill_in "パスワード", with: @user.password
       click_button "ログイン"
-      expect(page).to have_content "Bob"
+      expect(page).to have_content "ボブ"
     end
     it "is user login faild" do      
       visit root_path

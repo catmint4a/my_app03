@@ -12,9 +12,20 @@
 .center{
   text-align: center;
 }
-header img {
-  float: left;
+
+// header .container {
+//   display: table; 
+// }
+
+header .container img {
+  // display: table-cell;
+  // float: left;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
 }
+
 #logo {
   float: left;
   margin-right: 10px;
@@ -185,11 +196,24 @@ span.image {
 .user_info {
   width: auto;
   margin-bottom: 20px;
+  text-align: center;
+  .user_name {
+    margin: 0px;
+    width: 300px;
+  }
   h1 {
     display :block;
-    margin: 20px 10px 10px 10px;
+    margin: 1px 10px 10px 10px;
+  }
+  img {
+    display: inline-block;
   }
 }
+
+#user_info_image {
+  text-align: center;
+}
+
 img {
   // display :inline-block;
   margin: 5px;
@@ -200,10 +224,12 @@ img {
 }
 
 .stats {
+  text-align: center;
   overflow: auto;
   margin-top: 0;
   padding: 0;
   a {
+    text-align: center;
     float: left;
     padding: 0 10px;
     border-left: 1px solid $gray-lighter;

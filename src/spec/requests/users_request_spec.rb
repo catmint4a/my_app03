@@ -4,6 +4,7 @@ RSpec.describe "Users", type: :request do
   before do
     @user = User.new(
     name: "Aaron2",
+    user_name: "アーロン２",
     email: "tester2@example.com",
     password: "password",
     password_confirmation: "password",
@@ -13,6 +14,7 @@ RSpec.describe "Users", type: :request do
 
     @user2 = User.new(
     name: "taro2",
+    user_name: "たろう２",
     email: "taro2@example.com",
     password: "password",
     password_confirmation: "password",

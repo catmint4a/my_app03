@@ -24,6 +24,7 @@ RSpec.describe Micropost, type: :model do
   it "is associated microposts should be destroyed" do
     user = User.new(
       name: "Jan",
+      user_name: "ジャン",
       email: "jan@example.com",
       password: "password",
       password_confirmation: "password",

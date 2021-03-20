@@ -10,7 +10,7 @@
         <% else %>
           <%= image_tag "default.png" %>
         <% end %>
-        <%= link_to user.name, user %>
+        <%= link_to user.user_name, user %>
           <% @user = user %>
         <p><%= render 'follow_form_mini' %></p>
       </li>
