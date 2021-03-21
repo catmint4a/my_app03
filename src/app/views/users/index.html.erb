@@ -28,7 +28,10 @@
               <%= image_tag "default.png" %>
             <% end %>
             <%= link_to user.user_name, user %>
-              <% @user = user %>
+              <span>
+                <% @user = user %>
+                <div class="profiles"><%= user.profile %></div>
+              </span>
             <p><%= render 'follow_form_mini' %></p>
           </li>
           <hr>
