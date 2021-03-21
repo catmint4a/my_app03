@@ -12,7 +12,7 @@
     </strong>
     フォロワー
   </a>
-  <a href="<%= likes_path %>">
+  <a href="/users/<%=@user.name%>/likes">
     <strong id="likes" class="stat">
       <%= @user.likes.count %>
     </strong>

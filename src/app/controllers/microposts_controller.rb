@@ -37,7 +37,8 @@ class MicropostsController < ApplicationController
     end
 
     def like_feed
-      like_ids = "SELECT micropost_id FROM likes WHERE user_id = #{current_user.id}"
+      @user = User.find_by(name: params[:name])
+      like_ids = "SELECT micropost_id FROM likes WHERE user_id = #{@user.id}"
       Micropost.where("id IN (#{like_ids})")
     end
 end

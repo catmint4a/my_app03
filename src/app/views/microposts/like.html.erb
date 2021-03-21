@@ -1,18 +1,19 @@
 <% provide(:title, "いいね！") %>
-<% @user = current_user %>
 <div class="row">
   <aside class="col-md-4">
     <section class="user_info">
-      <%= image_tag @user.display_user_image if @user.image.attached? %>
-      <h1>
-        <%= @user.name %>
-      </h1>
-      <li>
-        <% if current_user.admin? && !current_user?(@user) %>
-        | <%= link_to "ユーザーを削除", @user, method: :delete,
-                                    data: { confirm: "本当に削除してよろしいですか？" } %>
-        <% end %>
-      </li>  
+      <% if @user.image.attached? %>
+          <%= image_tag current_user.display_user_image %>
+      <% else %>
+        <%= image_tag "default.png" %>
+      <% end %>
+      <div class="user_name">
+        <h1><%= @user.user_name %></h1>
+      </div>
+      <br>
+      <span><%= link_to "プロフィール", @user %></span>
+      <br>
+      <span><b>投稿：</b> <%= @user.microposts.count %></span>
     </section>
     <section class="stats">
       <%= render 'shared/stats' %>
@@ -20,7 +21,7 @@
   </aside>
 
   <div class="col-md-8">
-  <h1>いいね！した投稿</h1>
+  <h3>いいね！した投稿</h3>
   <% if @like_posts.any? %>
     <ol class="microposts">
     <% @like_posts.each do |like_post| %>
