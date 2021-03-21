@@ -1,4 +1,5 @@
 <%= link_to user.user_name, user %>
+<div class="profiles"><%= user.profile %></div>
 <span>
   <% if current_user.admin? && !current_user?(user) %>
     | <%= link_to "ユーザーを削除", user, method: :delete,
