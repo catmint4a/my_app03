@@ -200,6 +200,7 @@ span.image {
   .user_name {
     margin: 0px;
     width: 300px;
+    word-break:break-all
   }
   h1 {
     display :block;
@@ -299,10 +300,10 @@ img {
   margin: 20px 20px 5px 20px;
 }
 .profile {
-  margin-top: 10px;
+  margin: 10px;
   padding: 10px;
   border: 1px solid #e8e8e8;
-  width: 300px;
+  width: 280px;
 }
 
 .profiles {
