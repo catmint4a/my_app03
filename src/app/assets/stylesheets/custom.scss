@@ -221,6 +221,8 @@ img {
 
 .col-md-4 {
   width: auto;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .stats {
@@ -267,8 +269,11 @@ img {
   width:120px;
 }
 
-.col-md-8 h3 {
+.col-md-8 {
+  max-width: 650px;
+  h3 {
   margin-top: 80px;
+  }
 }
 
 .microposts .content, .microposts .timestamp { 
