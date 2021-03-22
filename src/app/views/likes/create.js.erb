@@ -1,3 +1,4 @@
 $("#micropost_<%= @micropost.id %>").html("<%= escape_javascript(render('microposts/unlike')) %>");
 $("#likes_count_<%= @micropost.id %>").html('<%= @micropost.likes.count %>');
-if(<%= URI(request.referer.to_s).path == '/' %>){$("#likes").html('<%= @current_user.likes.count %>');}
+if(<%= URI(request.referer.to_s).path == '/' || URI(request.referer.to_s).path == "/users/#{@current_user.name}" %>)
+  {$("#likes").html('<%= @current_user.likes.count %>');}
