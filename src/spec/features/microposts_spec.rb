@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "Microposts", type: :feature do
   before do
-    @user = FactoryBot.create(:user) 
+    @user = FactoryBot.create(:user)
     @micropost = @user.microposts.create(content: "first post")
     40.times do
       content = Faker::Lorem.sentence(word_count: 4)
