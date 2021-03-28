@@ -18,4 +18,10 @@
     </strong>
     いいね！
   </a>
+  <a href="/users/<%=@user.name%>/reply">
+    <strong id="reply" class="stat">
+      <%= Micropost.where(in_reply_to: @user.id).count %>
+    </strong>
+    返信
+  </a>
 </div>

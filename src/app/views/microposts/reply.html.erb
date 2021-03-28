@@ -1,0 +1,34 @@
+<% provide(:title, "自分への返信") %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <% if @user.image.attached? %>
+          <%= image_tag current_user.display_user_image %>
+      <% else %>
+        <%= image_tag "default.png" %>
+      <% end %>
+      <div class="user_name">
+        <h1><%= @user.user_name %></h1>
+      </div>
+      <br>
+      <span><%= link_to "プロフィール", @user %></span>
+      <br>
+      <span><b>投稿：</b> <%= @user.microposts.count %></span>
+    </section>
+    <section class="stats">
+      <%= render 'shared/stats' %>
+    </section>
+  </aside>
+
+  <div class="col-md-8">
+  <h3>自分への返信</h3>
+  <% if @reply_posts.any? %>
+    <ol class="microposts">
+    <% @reply_posts.each do |reply_post| %>
+      <%= render reply_post %>
+    <% end %>
+    </ol>
+      <%= will_paginate @reply_posts %>
+  <% end %>
+  </div>
+</div>

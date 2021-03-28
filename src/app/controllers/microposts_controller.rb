@@ -39,6 +39,10 @@ class MicropostsController < ApplicationController
   def like
     @like_posts = like_feed.paginate(page: params[:page])
   end
+  
+  def reply
+    @reply_posts = reply_feed.paginate(page: params[:page])
+  end
 
   private
 
@@ -55,5 +59,10 @@ class MicropostsController < ApplicationController
       @user = User.find_by(name: params[:name])
       like_ids = "SELECT micropost_id FROM likes WHERE user_id = #{@user.id}"
       Micropost.where("id IN (#{like_ids})")
+    end
+
+    def reply_feed
+      @user = User.find_by(name: params[:name])
+      Micropost.where(in_reply_to: @user.id)
     end
 end
