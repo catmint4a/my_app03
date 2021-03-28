@@ -1,11 +1,9 @@
 <%= form_with(model: @micropost, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
   <div class="field">
-  <% if $user_name %>
-    <%= f.text_area :content, placeholder: "いまどうしてる？" %>
-    <%= $user_name = "" %>
+  <% if $user %>
+    <%= f.text_area :content, placeholder: "いまどうしてる？", value: "@#{$user_name} " %>
   <% else %>
-    <%= $user_name = "" %>
     <%= f.text_area :content, placeholder: "いまどうしてる？" %>
   <% end %>
   </div>
