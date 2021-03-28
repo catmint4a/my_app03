@@ -1,4 +1,6 @@
 <%= link_to user.user_name, user %>
+<div class="account_name"><%= link_to user.name, user %></div>
+
 <div class="profiles"><%= user.profile %></div>
 <span>
   <% if current_user.admin? && !current_user?(user) %>

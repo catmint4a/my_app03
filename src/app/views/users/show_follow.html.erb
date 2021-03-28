@@ -9,6 +9,7 @@
       <% end %>
       <div class="user_name">
         <h1><%= @user.user_name %></h1>
+        <div class="profile_account_name"><%= link_to @user.name, @user %></div>
       </div>
       <br>
       <span><%= link_to "プロフィール", @user %></span>

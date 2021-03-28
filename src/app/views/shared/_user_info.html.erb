@@ -7,6 +7,7 @@
 </div>
 <div class="user_name">
   <h1><%= current_user.user_name %></h1>
+  <div class="profile_account_name"><%= link_to current_user.name, current_user %></div>
 </div>
 <p>
   <span><%= link_to "プロフィール", current_user %></span>
