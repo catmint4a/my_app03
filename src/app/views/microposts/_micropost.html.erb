@@ -31,24 +31,32 @@
     <span id="likes_count_<%= @micropost.id %>">
       <%= @micropost.likes.count %>
     </span>
+    <% if request.path_info == "/" %>
     <span id="reply_<%= @micropost.id %>" >
        返信
     </span>
+    <% end %>
   </span>
 </li>
-<script>
+<script type="text/javascript">
   $(function () {
     $("#reply_<%= @micropost.id %>").click( function() {
-      $("<%= $user_name = @micropost.user.name %>")
-      // テキストボックスへ値を設定します
-      $("#micropost_content").val("<%= "@#{$user_name} " %>");
-      // $("#micropost_content").val("<%= "@#{@micropost.user.name} " %>");
-      $("<%= $user_name = nil %>")
-      // $(scrollTo(0, 0));
-      $('body,html').animate({
-            scrollTop: 0
-        }, 500);
-        return false;
-    });
-  });
+      $("<%= $user_name = nil %>");
+      $("<%= $user_name = @micropost.user.name %>");
+      if(document.getElementById("micropost_content")){
+        // テキストボックスへ値を設定します
+        $("#micropost_content").val("<%= "@#{@micropost.user.name} " %>");
+        $("<%= $user_name = nil %>");
+        $('body,html').animate({
+          scrollTop: 0
+          }, 500);
+        $("<%= $user_name = nil %>");
+        return false; 
+        }else{
+          window.location.href = '/'; 
+          $("<%= $user_name = @micropost.user.name %>");
+        }
+        ;
+    
+  })});
 </script>
