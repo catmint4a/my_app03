@@ -313,3 +313,21 @@ img {
   text-overflow: ellipsis;
   white-space: nowrap;
 }
+
+.account_name {
+  color: #888;
+  display: inline;
+  a {
+    color: #888;
+  }
+}
+
+.profile_account_name {
+  color: #888;
+  display: inline;
+  font-size: 26px;
+  a {
+    font-size: 26px;
+    color: #888;
+  }
+}

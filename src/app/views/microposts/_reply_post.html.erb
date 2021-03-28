@@ -1,4 +1,4 @@
-<% @micropost = micropost %>
+  <% @micropost = reply_post %>
 <li id="micropost-<%= @micropost.id %>">
   
   <% if @micropost.user.image.attached? %>
@@ -6,10 +6,7 @@
   <% else %>
     <%= image_tag "default.png" %>
   <% end %>
-  <span class="user">
-    <%= link_to @micropost.user.user_name, @micropost.user %>
-    <div class="account_name"><%= link_to @micropost.user.name, @micropost.user %></div>
-  </span>
+  <span class="user"><%= link_to @micropost.user.user_name, @micropost.user %></span>
   <span class="content">
     <%= @micropost.content %>
     <br>
@@ -31,24 +28,6 @@
     <span id="likes_count_<%= @micropost.id %>">
       <%= @micropost.likes.count %>
     </span>
-    <span id="reply_<%= @micropost.id %>" >
-       返信
-    </span>
+
   </span>
 </li>
-<script>
-  $(function () {
-    $("#reply_<%= @micropost.id %>").click( function() {
-      $("<%= $user_name = @micropost.user.name %>")
-      // テキストボックスへ値を設定します
-      $("#micropost_content").val("<%= "@#{$user_name} " %>");
-      // $("#micropost_content").val("<%= "@#{@micropost.user.name} " %>");
-      $("<%= $user_name = nil %>")
-      // $(scrollTo(0, 0));
-      $('body,html').animate({
-            scrollTop: 0
-        }, 500);
-        return false;
-    });
-  });
-</script>

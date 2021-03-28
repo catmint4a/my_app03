@@ -9,6 +9,7 @@
       <% end %>
       <div class="user_name">
         <h1><%= @user.user_name %></h1>
+        <div class="profile_account_name"><%= link_to @user.name, @user %></div>
       </div>
       <span><%= pluralize(@user.microposts.count, "  件の投稿") %></span>
       <li>

@@ -22,4 +22,5 @@ Rails.application.routes.draw do
   post '/likes/:id/create', to: 'likes#create'
   delete '/likes/:id/destroy', to: 'likes#destroy'
   get '/users/:name/likes', to: 'microposts#like'
+  get '/users/:name/reply', to: 'microposts#reply'
 end
