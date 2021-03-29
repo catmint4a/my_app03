@@ -9,13 +9,13 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.paginate(page: params[:page])
+    @users = User.paginate(page: params[:page]).search(params[:search])
   end
 
   def show
     if User.find_by(name: params[:name])
       @user = User.find_by(name: params[:name])
-      @microposts = @user.microposts.paginate(page: params[:page])
+      @microposts = @user.microposts.paginate(page: params[:page]).search(params[:search])
     else
       flash[:danger] = "ページが存在しません"
       redirect_to root_path

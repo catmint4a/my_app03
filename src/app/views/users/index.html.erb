@@ -17,6 +17,13 @@
   </aside>
 
   <div class="col-md-8">
+    <p>ユーザー検索</p>
+    <%= form_tag users_path, method: 'get' do %>
+      <p>
+        <%= text_field_tag :search, params[:search] %>
+        <%= submit_tag "検索", name: nil %>
+      </P>
+    <% end  %>
     <h3>ユーザー一覧</h3>
     <%= will_paginate %>
       <ul class="users">
@@ -28,6 +35,7 @@
               <%= image_tag "default.png" %>
             <% end %>
             <%= link_to user.user_name, user %>
+            <div class="account_name"><%= link_to "@"+user.name, user %></div>
               <span>
                 <% @user = user %>
                 <div class="profiles"><%= user.profile %></div>
