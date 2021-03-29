@@ -17,4 +17,12 @@ class Micropost < ApplicationRecord
       return image
     end
   end
+
+  def self.search(search)
+    if search
+      where(['content LIKE ?', "%#{search}%"])
+    else
+      Micropost.all
+    end
+  end
 end

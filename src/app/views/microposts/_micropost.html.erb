@@ -8,7 +8,7 @@
   <% end %>
   <span class="user">
     <%= link_to @micropost.user.user_name, @micropost.user %>
-    <div class="account_name"><%= link_to @micropost.user.name, @micropost.user %></div>
+    <div class="account_name"><%= link_to "@"+@micropost.user.name, @micropost.user %></div>
   </span>
   <span class="content">
     <%= @micropost.content %>
