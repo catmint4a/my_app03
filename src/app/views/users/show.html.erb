@@ -30,12 +30,12 @@
 
   <div class="col-md-8">
   <p>投稿検索</p>
-    <%= form_tag root_path, method: 'get' do %>
+    <%= form_tag user_path, method: 'get' do %>
       <p>
         <%= text_field_tag :search, params[:search] %>
         <%= submit_tag "検索", name: nil %>
       </P>
-    <% end  %>
+    <% end %>
   <%= render 'follow_form' if logged_in? %>
   <% if @user.microposts.any? %>
     <h3>投稿 (<%= @user.microposts.count %>)</h3>
