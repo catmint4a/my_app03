@@ -37,11 +37,11 @@ class MicropostsController < ApplicationController
   end
 
   def like
-    @like_posts = like_feed.paginate(page: params[:page])
+    @like_posts = like_feed.paginate(page: params[:page]).search(params[:search])
   end
   
   def reply
-    @reply_posts = reply_feed.paginate(page: params[:page])
+    @reply_posts = reply_feed.paginate(page: params[:page]).search(params[:search])
   end
 
   private

@@ -21,6 +21,24 @@
     </section>
   </aside>
   <div class="col-md-8">
+    <% if @title == "フォロー" %>
+      <p>ユーザー検索</p>
+      <%= form_tag following_user_path, method: 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "検索", name: nil %>
+        </P>
+      <% end  %>
+    <% end  %>
+    <% if @title == "フォロワー" %>
+      <p>ユーザー検索</p>
+      <%= form_tag followers_user_path, method: 'get' do %>
+        <p>
+          <%= text_field_tag :search, params[:search] %>
+          <%= submit_tag "検索", name: nil %>
+        </P>
+      <% end %>
+    <% end %>
     <h3><%= @title %></h3>
     <% if @users.any? %>
       <ul class="users follow">
