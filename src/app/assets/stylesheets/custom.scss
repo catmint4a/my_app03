@@ -6,20 +6,12 @@
   -webkit-box-sizing: border-box;
   box-sizing:         border-box;
 }
-// .container {
-//   margin: auto;
-// }
+
 .center{
   text-align: center;
 }
 
-// header .container {
-//   display: table; 
-// }
-
 header .container img {
-  // display: table-cell;
-  // float: left;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -184,14 +176,6 @@ span.image {
 .section,li {
   list-style: none;
 }
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
 
 .user_info {
   width: auto;
@@ -216,7 +200,6 @@ span.image {
 }
 
 img {
-  // display :inline-block;
   margin: 5px;
 }
 
@@ -284,6 +267,8 @@ img {
 .microposts .content, .microposts .timestamp { 
   margin-left: 75px;
 }
+
+/* extention */
 
 .like-btn-unlike {
   color: #f55;

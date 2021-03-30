@@ -15,9 +15,6 @@ RSpec.describe "Microposts", type: :request do
 
   context "login user delete other user's post" do
     let(:user) { FactoryBot.create(:users) }
-    # before do
-    #   sign_in_as(user)
-    # end
 
     it "does not change micropost count" do
       expect{ delete_request }.to change(Micropost, :count).by(0)

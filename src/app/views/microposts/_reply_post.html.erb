@@ -1,23 +1,27 @@
-  <% @micropost = reply_post %>
-<li id="micropost-<%= @micropost.id %>">
-  
+<% @micropost = reply_post %>
+<li id="micropost-<%= @micropost.id %>">  
+
   <% if @micropost.user.image.attached? %>
     <%= image_tag @micropost.user.display_user_image %>
   <% else %>
     <%= image_tag "default.png" %>
   <% end %>
+
   <span class="user"><%= link_to @micropost.user.user_name, @micropost.user %></span>
   <span class="content">
     <%= @micropost.content %>
     <br>
     <%= image_tag @micropost.display_image if @micropost.image.attached? %>
   </span>
+
   <span class="timestamp">
+
     投稿 <%= time_ago_in_words(@micropost.created_at) if @micropost.created_at %>前.
     <% if current_user?(@micropost.user) %>
       <%= link_to "削除", @micropost, method: :delete,
                                        data: { confirm: "削除してよろしいですか？" } %>
     <% end %>
+
     <span id="micropost_<%= @micropost.id %>">
       <% if  Like.find_by(micropost_id: @micropost.id, user_id: @current_user.id) %>
         <%= render 'microposts/unlike' %>
@@ -25,9 +29,10 @@
         <%= render 'microposts/like' %>
       <% end %>
     </span>
+
     <span id="likes_count_<%= @micropost.id %>">
       <%= @micropost.likes.count %>
     </span>
-
+    
   </span>
 </li>

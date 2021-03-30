@@ -6,22 +6,26 @@
     </strong>
     フォロー
   </a>
+
   <a href="<%= followers_user_path(@user) %>">
     <strong id="followers" class="stat">
       <%= @user.followers.count %>
     </strong>
     フォロワー
   </a>
+
   <a href="/users/<%=@user.name%>/likes">
     <strong id="likes" class="stat">
       <%= @user.likes.count %>
     </strong>
     いいね！
   </a>
+
   <a href="/users/<%=@user.name%>/reply">
     <strong id="reply" class="stat">
       <%= Micropost.where(in_reply_to: @user.id).count %>
     </strong>
     返信
   </a>
+  
 </div>

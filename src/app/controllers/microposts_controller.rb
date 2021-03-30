@@ -6,7 +6,8 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(micropost_params)
     @micropost.image.attach(params[:micropost][:image])
-     # @から始まり、半角英数またはアンダースコアが5回以上、15回以下の繰り返しにマッチ。大文字、小文字区別しない。
+     # 正規表現によるマッチング。@から始まり、半角英数またはアンダースコアが5回以上、
+     # 15回以下の繰り返しにマッチ。大文字、小文字区別しない。
     re = /@([0-9a-z_]{5,15})/i
 
     # 投稿文に対して上記正規表現をマッチング
@@ -26,7 +27,7 @@ class MicropostsController < ApplicationController
       redirect_to root_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
-      render 'static_pages/home'
+      render "static_pages/home"
     end
   end
 
