@@ -13,7 +13,6 @@ class LikesController < ApplicationController
       format.html { redirect_to @current_user }
       format.js
     end
-    # redirect_to request.referer
   end
 
   def destroy
@@ -27,6 +26,5 @@ class LikesController < ApplicationController
       format.html { redirect_to @current_user }
       format.js
     end
-    # redirect_to request.referer
   end
 end

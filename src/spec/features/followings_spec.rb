@@ -31,7 +31,6 @@ RSpec.feature "Followings", type: :feature do
     expect do
       click_on "フォロー解除"
       expect(page).not_to have_link "フォロー解除"
-      # Ajaxの処理待ちの為に入れています
       visit current_path
     end.to change(user.following, :count).by(-1)
   end
@@ -41,7 +40,6 @@ RSpec.feature "Followings", type: :feature do
     expect do
       click_on "フォローする"
       expect(page).not_to have_link "フォローする"
-      # Ajaxの処理待ちの為に入れています
       visit current_path
     end.to change(user.following, :count).by(1)
   end

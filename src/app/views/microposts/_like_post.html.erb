@@ -1,4 +1,4 @@
-  <% @micropost = like_post %>
+<% @micropost = like_post %>
 <li id="micropost-<%= @micropost.id %>">
   
   <% if @micropost.user.image.attached? %>
@@ -28,6 +28,5 @@
     <span id="likes_count_<%= @micropost.id %>">
       <%= @micropost.likes.count %>
     </span>
-
   </span>
 </li>
