@@ -1,4 +1,4 @@
-FROM ruby:2.7
+FROM ruby:2.7.3
 
 ENV RAILS_ENV=production
 ENV PROJECT neptune
