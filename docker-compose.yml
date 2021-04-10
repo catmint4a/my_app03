@@ -7,19 +7,35 @@ services:
       - ./src/db/mysql_data:/var/lib/mysql
     environment:
       MYSQL_ROOT_PASSWORD: password
+    tty: true
+    ports:
+      - 3306:3306
   web:
     build: .
-    command: bundle exec rails s -p 3000 -b '0.0.0.0'
     volumes:
       - ./src:/app
       - yarn-cache:/usr/local/share/.cache/yarn/v6
-    ports:
-      - "3000:3000"
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+      - log-data:/app/log
     environment:
       RAILS_ENV: development
     depends_on:
       - db
     stdin_open: true
     tty: true
+  nginx:
+    build: 
+      context: ./nginx
+    ports:
+      - 3000:3000
+    depends_on:
+      - web
+    volumes:
+      - public-data:/app/public
+      - tmp-data:/app/tmp
 volumes:
   yarn-cache:
+  public-data:
+  tmp-data:
+  log-data:
