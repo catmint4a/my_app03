@@ -25,6 +25,7 @@ services:
     stdin_open: true
     tty: true
   nginx:
+    image: registry.heroku.com/rails-myapp04-sky/web:0.1.0
     build: 
       context: ./nginx
     ports:
