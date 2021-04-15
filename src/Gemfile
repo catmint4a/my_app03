@@ -81,6 +81,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'devise'
 gem 'paperclip'
+gem 'dotenv-rails'
 # gem 'geocoder'
 # gem 'jquery-rails'
 # gem 'remotipart'

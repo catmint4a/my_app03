@@ -2,7 +2,7 @@
 ぽすといっと！
 
 ## サイトのコンセプト
-マイクロポストサイト
+マイクロポスト投稿サイト
 
 ## 機能
 文章の投稿
@@ -10,6 +10,7 @@
 フォロー機能
 いいね機能
 検索機能
+返信機能
 
 ## 使用技術
 Ruby
@@ -17,12 +18,11 @@ Ruby on Rails
 MySQL
 Rspec
 JavaScript
-React
+jquery
 docker
 heroku
 CircleCI
-AWS
--S3
+AWS -S3
 
 # README
 
