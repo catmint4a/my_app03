@@ -54,7 +54,7 @@ jobs:
           account-url: AWS_ACCOUNT_URL
           repo: "myapp04"
           region: AWS_REGION
-          tag: "${CIRCLE_SHA1}"
+          tag: "latest"
 
 workflows:
   version: 2
