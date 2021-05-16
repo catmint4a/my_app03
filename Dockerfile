@@ -11,6 +11,7 @@ WORKDIR /app
 COPY ./src /app
 RUN bundle config --local set path 'vendor/bundle' \
   && bundle install
+RUN bundle exec bin/webpack
 COPY start.sh /start.sh
 RUN chmod 777 /start.sh
 RUN mkdir -p tmp/sockets
