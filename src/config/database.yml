@@ -51,11 +51,13 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['APP_DATABASE'] %>
-  username: <%= ENV['APP_DATABASE_USERNAME'] %>
-  password: <%= ENV['APP_DATABASE_PASSWORD'] %>
-  host:     <%= ENV['APP_DATABASE_HOST'] %>
-  adapter: mysql2
-  encoding: utf8mb4
-  charset: utf8mb4
-  collation: utf8mb4_general_ci
+  # database: <%= ENV['APP_DATABASE'] %>
+  database: app_production
+  url: <%= ENV['DATABASE_URL'] %>
+  # username: <%= ENV['APP_DATABASE_USERNAME'] %>
+  # password: <%= ENV['APP_DATABASE_PASSWORD'] %>
+  # host:     <%= ENV['APP_DATABASE_HOST'] %>
+  # adapter: mysql2
+  # encoding: utf8mb4
+  # charset: utf8mb4
+  # collation: utf8mb4_general_ci

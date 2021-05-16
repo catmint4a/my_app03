@@ -5,4 +5,4 @@ if [ "${RAILS_ENV}" = "production" ]; then
 fi
 cp -rf /tmp/public/* /app/public/
 mkdir -p tmp/sockets
-bundle exec puma -C config/puma.rb -e production
+bundle exec puma -C config/puma.rb
