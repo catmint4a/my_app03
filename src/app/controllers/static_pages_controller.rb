@@ -6,7 +6,11 @@ class StaticPagesController < ApplicationController
       @feed_items = current_user.feed.paginate(page: params[:page]).search(params[:search])
     end
   end
-  
+
+  def health_check
+    head 200
+  end
+
   def help
   end
 
