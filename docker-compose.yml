@@ -18,24 +18,19 @@ services:
       - public-data:/app/public
       - tmp-data:/app/tmp
       - log-data:/app/log
+      - bundle_data:/usr/local/bundle:cached
     environment:
       RAILS_ENV: development
     depends_on:
       - db
-    stdin_open: true
-    tty: true
-  nginx:
-    build:
-      context: ./nginx
     ports:
       - 3000:3000
-    depends_on:
-      - web
-    volumes:
-      - public-data:/app/public
-      - tmp-data:/app/tmp
+    stdin_open: true
+    tty: true
+
 volumes:
   yarn-cache:
   public-data:
   tmp-data:
   log-data:
+  bundle_data:
