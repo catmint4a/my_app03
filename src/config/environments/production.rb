@@ -131,6 +131,5 @@ Rails.application.configure do
   }
 
   config.active_storage.service = :amazon
-  config.hosts << IPAddr.new('192.168.0.0/16')
 
 end
