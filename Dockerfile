@@ -6,10 +6,10 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq
 RUN apt-get install -y nodejs yarn
-RUN apt-get install -y build-essential \
-  libpq-dev \
-  sudo \
-  nginx
+# RUN apt-get install -y build-essential \
+#   libpq-dev \
+#   sudo \
+#   nginx
 RUN apt-get -y install imagemagick
 WORKDIR /app
 COPY ./src /app
@@ -27,8 +27,8 @@ RUN gem install bundler
 #     && entrykit --symlink
 
 RUN bundle install
-RUN groupadd nginx
-RUN useradd -g nginx nginx
+# RUN groupadd nginx
+# RUN useradd -g nginx nginx
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
 COPY start.sh /start.sh
 RUN chmod 777 /start.sh
