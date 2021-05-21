@@ -18,16 +18,16 @@ COPY ./src /app
 RUN gem install bundler
 
 # RUN ["apt-get", "install", "-y", "vim"]
-ENV ENTRYKIT_VERSION 0.4.0
+# ENV ENTRYKIT_VERSION 0.4.0
 
-RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-    && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-    && rm entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
-    && mv entrykit /bin/entrykit \
-    && chmod +x /bin/entrykit \
-    && entrykit --symlink
+# RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+#     && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+#     && rm entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
+#     && mv entrykit /bin/entrykit \
+#     && chmod +x /bin/entrykit \
+#     && entrykit --symlink
 
-# RUN bundle install
+RUN bundle install
 RUN groupadd nginx
 RUN useradd -g nginx nginx
 ADD nginx/nginx.conf /etc/nginx/nginx.conf
@@ -38,7 +38,7 @@ RUN mkdir -p tmp/pids
 RUN mkdir -p /tmp/public && \
     cp -rf /app/public/* /tmp/public
 EXPOSE 3000
-ENTRYPOINT [ \
-  "prehook", "ruby -v", "--", \
-  "prehook", "bundle install -j3 --path /usr/local/bundle", "--"]
+# ENTRYPOINT [ \
+#   "prehook", "ruby -v", "--", \
+#   "prehook", "bundle install -j3 --path /usr/local/bundle", "--"]
 CMD ["sh", "/start.sh"]
