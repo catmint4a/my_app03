@@ -119,7 +119,7 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'https://zenn-app-sky.com'
+  host = 'zenn-app-sky.com'
   config.hosts.clear
   config.action_mailer.default_url_options = { host: host }
   ActionMailer::Base.smtp_settings = {
