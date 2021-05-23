@@ -6,10 +6,10 @@ RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq
 RUN apt-get install -y nodejs yarn
-RUN apt-get install -y build-essential \
-  libpq-dev \
-  sudo \
-  nginx
+# RUN apt-get install -y build-essential \
+#   libpq-dev \
+#   sudo \
+#   nginx
 RUN apt-get -y install imagemagick
 WORKDIR /app
 COPY ./src /app
@@ -17,7 +17,7 @@ COPY ./src /app
 #   && bundle install
 RUN gem install bundler
 
-RUN ["apt-get", "install", "-y", "vim"]
+# RUN ["apt-get", "install", "-y", "vim"]
 # ENV ENTRYKIT_VERSION 0.4.0
 # RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
 #     && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
@@ -27,10 +27,10 @@ RUN ["apt-get", "install", "-y", "vim"]
 #     && entrykit --symlink
 
 RUN bundle install
-RUN groupadd nginx
-RUN useradd -g nginx nginx
-RUN rm -f /etc/nginx/conf.d/*
-COPY ./src/nginx/nginx.conf /etc/nginx/nginx.conf
+# RUN groupadd nginx
+# RUN useradd -g nginx nginx
+# RUN rm -f /etc/nginx/conf.d/*
+# COPY ./src/nginx/nginx.conf /etc/nginx/nginx.conf
 COPY start.sh /start.sh
 RUN chmod 777 /start.sh
 RUN mkdir -p tmp/sockets
