@@ -18,7 +18,6 @@ Rails.application.config.middleware.insert_before 0, Rack::Cors do
   allow do
     # localhost:3000 からのアクセスを許容する
     origins ['http://myapp-alb-412013934.ap-northeast-1.elb.amazonaws.com', 'http://localhost:3000']
-
     resource '*',
     headers: :any,
     methods: %i[get post put patch delete options head]
