@@ -17,7 +17,7 @@ COPY ./src /app
 #   && bundle install
 RUN gem install bundler
 
-RUN ["apt-get", "install", "-y", "vim"]
+# RUN ["apt-get", "install", "-y", "vim"]
 # ENV ENTRYKIT_VERSION 0.4.0
 # RUN wget https://github.com/progrium/entrykit/releases/download/v${ENTRYKIT_VERSION}/entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
 #     && tar -xvzf entrykit_${ENTRYKIT_VERSION}_Linux_x86_64.tgz \
