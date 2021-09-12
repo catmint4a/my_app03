@@ -1,1 +1,0 @@
-initrd=\initrd.img panic=-1 pty.legacy_count=0 nr_cpus=8 vsyscall=emulate
