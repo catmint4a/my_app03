@@ -20,9 +20,15 @@ Rspec
 JavaScript
 jquery
 docker
-heroku
 CircleCI
 AWS -S3
+    -VPC
+    -EC2
+    -ECR
+    -ECS(Fargate)
+    -RDS
+    -ROUTE53
+
 
 # README
 

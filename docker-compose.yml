@@ -15,9 +15,9 @@ services:
     volumes:
       - ./src:/app
       - yarn-cache:/usr/local/share/.cache/yarn/v6
-      - public-data:/app/public
-      - tmp-data:/app/tmp
-      - log-data:/app/log
+      # - public-data:/app/public
+      # - tmp-data:/app/tmp
+      # - log-data:/app/log
       - bundle_data:/usr/local/bundle:cached
     environment:
       RAILS_ENV: development
@@ -25,12 +25,12 @@ services:
       - db
     ports:
       - 3000:3000
-    # command: bundle exec rails server -b 0.0.0.0
+    command: bundle exec rails server -b 0.0.0.0
     stdin_open: true
     tty: true
 volumes:
   yarn-cache:
-  public-data:
-  tmp-data:
-  log-data:
+  # public-data:
+  # tmp-data:
+  # log-data:
   bundle_data:
