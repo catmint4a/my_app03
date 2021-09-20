@@ -39,3 +39,8 @@ src/db/mysql_data
 
 *.DS_Store
 .env
+
+.terraform.lock.hcl
+terraform/.terraform
+terraform/.terraform*
+terraform/terraform.tfvars
