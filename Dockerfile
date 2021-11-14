@@ -38,7 +38,6 @@ RUN mkdir -p tmp/pids
 RUN mkdir -p /tmp/public && \
     cp -rf /app/public/* /tmp/public
 # EXPOSE 3000
-# EXPOSE 3000
 # ENTRYPOINT [ \
 #   "prehook", "ruby -v", "--", \
 #   "prehook", "bundle install -j3 --path /usr/local/bundle", "--"]
