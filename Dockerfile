@@ -15,7 +15,7 @@ WORKDIR /app
 COPY ./src /app
 # RUN bundle config --local set path 'vendor/bundle' \
 #   && bundle install
-RUN gem install bundler
+RUN gem install bundler -v 2.4.22
 
 # RUN ["apt-get", "install", "-y", "vim"]
 # ENV ENTRYKIT_VERSION 0.4.0

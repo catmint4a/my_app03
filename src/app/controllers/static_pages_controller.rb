@@ -18,7 +18,7 @@ class StaticPagesController < ApplicationController
   end
 
   def new_guest
-    user = User.find_or_create_by!(name: "guestuser", email: "guest@example.com") do |user|
+    user = User.find_or_create_by!(user_name: "guestuser", name: "guestuser", email: "guest@example.com", admin: true) do |user|
       user.password = "password"
       user.password_confirmation = "password"
       # user.password = SecureRandom.alphanumeric
